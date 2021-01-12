@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-3">
+                <h1 class="mainHead">post your queries</h1>
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" class="border p-5 contactForm">
+                    <div class="row">
+                        <mat-form-field class="col-sm-12">
+                            <mat-label>FullName</mat-label>
+                            <input 
+                            type="text"
+                            matInput 
+                            formControlName="fullName" 
+                            placeholder="Ex. John Doe" 
+                            name="fullName" required/>
+                            <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                                <mat-error *ngIf="f.fullName.errors.required">Fullname is required</mat-error>
+                                <mat-error *ngIf="f.fullName.errors.fullName">Fullname must be a valid</mat-error>
+                            </div>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-sm-12">
+                            <mat-label>Email</mat-label>
+                            <input 
+                            type="email" 
+                            matInput 
+                            formControlName="email" 
+                            placeholder="Ex. mail@email.com" required/>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+                                <mat-error *ngIf="f.email.errors.email">Email must be a valid email address</mat-error>
+                            </div>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-sm-12">
+                            <mat-label>Comment</mat-label>
+                            <textarea 
+                            matInput 
+                            placeholder="Post your query"
+                            formControlName="comment" required
+                            ></textarea>
+                        </mat-form-field>
+
+                        <div class="col-sm-12 text-right">
+                            <button mat-raised-button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>
